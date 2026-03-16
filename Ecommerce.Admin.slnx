@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Ecommerce.Admin.Web/Ecommerce.Admin.Web.csproj" />
+  <Project Path="Ecommerce.Application/Ecommerce.Application.csproj" />
+  <Project Path="Ecommerce.CrossCutting/Ecommerce.CrossCutting.csproj" />
+  <Project Path="Ecommerce.Domain/Ecommerce.Domain.csproj" />
+  <Project Path="Ecommerce.Infrastructure/Ecommerce.Infrastructure.csproj" />
+</Solution>

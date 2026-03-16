@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Ecommerce Admin</title>
+
+    <link rel="stylesheet" href="~/adminlte/css/adminlte.min.css" />
+    <link rel="stylesheet" href="~/adminlte/plugins/fontawesome/css/all.min.css" />
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <span class="navbar-brand">Ecommerce Admin</span>
+        </nav>
+
+        <!-- Sidebar -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+            <a class="brand-link text-center">
+                <span class="brand-text font-weight-light">Admin Panel</span>
+            </a>
+
+            <div class="sidebar">
+
+                <nav>
+                    <ul class="nav nav-pills nav-sidebar flex-column">
+
+                        <li class="nav-item">
+                            <a asp-controller="Category" asp-action="Index" class="nav-link">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>Categories</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a asp-controller="Product" asp-action="Index" class="nav-link">
+                                <i class="nav-icon fas fa-box"></i>
+                                <p>Products</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </div>
+
+        </aside>
+
+        <!-- Content -->
+        <div class="content-wrapper p-3">
+
+            @RenderBody()
+
+        </div>
+
+    </div>
+
+    <script src="~/adminlte/plugins/jquery/jquery.min.js"></script>
+    <script src="~/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/adminlte/js/adminlte.min.js"></script>
+
+</body>
+</html>
