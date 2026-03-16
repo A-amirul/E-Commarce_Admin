@@ -1,5 +1,33 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Ecommerce.Application.DTOs.CategoryDto
+
+<h3>Edit Category</h3>
+
+<form asp-action="Edit">
+
+    <input type="hidden" asp-for="CategoryID" />
+
+    <div class="form-group">
+        <label>Name</label>
+        <input asp-for="CategoryName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Slug</label>
+        <input asp-for="Slug" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Active</label>
+        <input asp-for="IsActive" type="checkbox" />
+    </div>
+
+    <br>
+
+    <button class="btn btn-primary">Update</button>
+
+</form>

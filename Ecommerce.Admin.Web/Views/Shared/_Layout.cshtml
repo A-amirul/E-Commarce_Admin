@@ -1,67 +1,72 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Ecommerce Admin</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Ecommerce Admin</title>
 
-    <link rel="stylesheet" href="~/adminlte/css/adminlte.min.css" />
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="~/adminlte/dist/css/adminlte.min.css" />
     <link rel="stylesheet" href="~/adminlte/plugins/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="~/adminlte/plugins/bootstrap/css/bootstrap.min.css" />
 
+    <!-- Optional custom CSS -->
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
-
 <body class="hold-transition sidebar-mini">
 
     <div class="wrapper">
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <span class="navbar-brand">Ecommerce Admin</span>
+            <a class="navbar-brand">Ecommerce Admin</a>
         </nav>
 
         <!-- Sidebar -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
-            <a class="brand-link text-center">
+            <!-- Brand Logo -->
+            <a href="/" class="brand-link text-center">
                 <span class="brand-text font-weight-light">Admin Panel</span>
             </a>
 
+            <!-- Sidebar -->
             <div class="sidebar">
-
                 <nav>
-                    <ul class="nav nav-pills nav-sidebar flex-column">
-
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                         <li class="nav-item">
                             <a asp-controller="Category" asp-action="Index" class="nav-link">
                                 <i class="nav-icon fas fa-list"></i>
                                 <p>Categories</p>
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a asp-controller="Product" asp-action="Index" class="nav-link">
                                 <i class="nav-icon fas fa-box"></i>
                                 <p>Products</p>
                             </a>
                         </li>
-
                     </ul>
                 </nav>
-
             </div>
-
         </aside>
 
-        <!-- Content -->
+        <!-- Content Wrapper -->
         <div class="content-wrapper p-3">
-
             @RenderBody()
-
         </div>
+
+        <!-- Footer (optional) -->
+        <footer class="main-footer text-center">
+            <strong>© 2026 Ecommerce Admin.</strong> All rights reserved.
+        </footer>
 
     </div>
 
+    <!-- Scripts -->
     <script src="~/adminlte/plugins/jquery/jquery.min.js"></script>
     <script src="~/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/adminlte/js/adminlte.min.js"></script>
+    <script src="~/adminlte/dist/js/adminlte.min.js"></script>
 
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -1,47 +1,84 @@
-﻿using Ecommerce.Application.Interfaces;
+﻿using Ecommerce.Application.DTOs;
+using Ecommerce.Application.Interfaces;
 using Ecommerce.Domain.Entities;
 
 namespace Ecommerce.Application.Services;
 
-public class ProductService
+public class ProductService(IRepository<Product> repository) : IProductService
 {
-    private readonly IRepository<Product> _repository;
-
-    public ProductService(IRepository<Product> repository)
+    public async Task<List<ProductDto>> GetAllAsync()
     {
-        _repository = repository;
-    }
+        var products = await repository.GetAllAsync();
 
-    public async Task<List<Product>> GetAll()
-    {
-        return await _repository.GetAllAsync();
-    }
-
-    public async Task<Product?> Get(int id)
-    {
-        return await _repository.GetByIdAsync(id);
-    }
-
-    public async Task Create(Product product)
-    {
-        await _repository.AddAsync(product);
-        await _repository.SaveAsync();
-    }
-
-    public async Task Update(Product product)
-    {
-        _repository.Update(product);
-        await _repository.SaveAsync();
-    }
-
-    public async Task Delete(int id)
-    {
-        var product = await _repository.GetByIdAsync(id);
-
-        if (product != null)
+        return products.Select(p => new ProductDto
         {
-            _repository.Delete(product);
-            await _repository.SaveAsync();
-        }
+            ProductID = p.ProductID,
+            ProductName = p.ProductName,
+            Price = p.Price,
+            ProductImage = p.ProductImage,
+            ProductDetails = p.ProductDetails,
+            CategoryID = p.CategoryID,
+            CategoryName = p.Category != null ? p.Category.CategoryName : ""
+        }).ToList();
+    }
+
+    public async Task<ProductDto?> GetAsync(int id)
+    {
+        var p = await repository.GetByIdAsync(id);
+
+        if (p == null) return null;
+
+        return new ProductDto
+        {
+            ProductID = p.ProductID,
+            ProductName = p.ProductName,
+            Price = p.Price,
+            ProductImage = p.ProductImage,
+            ProductDetails = p.ProductDetails,
+            CategoryID = p.CategoryID
+        };
+    }
+
+    public async Task CreateAsync(ProductDto dto)
+    {
+        var product = new Product
+        {
+            ProductName = dto.ProductName,
+            Price = dto.Price,
+            ProductImage = dto.ProductImage,
+            ProductDetails = dto.ProductDetails,
+            CategoryID = dto.CategoryID
+        };
+
+        await repository.AddAsync(product);
+        await repository.SaveAsync();
+    }
+
+    public async Task UpdateAsync(ProductDto dto)
+    {
+        var product = await repository.GetByIdAsync(dto.ProductID);
+
+        if (product == null) return;
+
+        product.ProductName = dto.ProductName;
+        product.Price = dto.Price;
+        product.ProductImage = dto.ProductImage;
+        product.ProductDetails = dto.ProductDetails;
+        product.CategoryID = dto.CategoryID;
+
+        repository.Update(product);
+
+        await repository.SaveAsync();
+    }
+
+    public async Task DeleteAsync(int id)
+    {
+        var product = await repository.GetByIdAsync(id);
+
+        if (product == null) return;
+
+        repository.Delete(product);
+
+        await repository.SaveAsync();
     }
 }

@@ -11,6 +11,7 @@ D:\E-Commarce\Ecommerce.Infrastructure\obj\Debug\net10.0\Ecommerce.Infrastructur
 D:\E-Commarce\Ecommerce.Infrastructure\obj\Debug\net10.0\Ecommerce.Infrastructure.AssemblyInfoInputs.cache
 D:\E-Commarce\Ecommerce.Infrastructure\obj\Debug\net10.0\Ecommerce.Infrastructure.AssemblyInfo.cs
 D:\E-Commarce\Ecommerce.Infrastructure\obj\Debug\net10.0\Ecommerce.Infrastructure.csproj.CoreCompileInputs.cache
+D:\E-Commarce\Ecommerce.Infrastructure\obj\Debug\net10.0\Ecommerce.Infrastructure.sourcelink.json
 D:\E-Commarce\Ecommerce.Infrastructure\obj\Debug\net10.0\Ecommerc.43E367F3.Up2Date
 D:\E-Commarce\Ecommerce.Infrastructure\obj\Debug\net10.0\Ecommerce.Infrastructure.dll
 D:\E-Commarce\Ecommerce.Infrastructure\obj\Debug\net10.0\refint\Ecommerce.Infrastructure.dll

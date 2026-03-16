@@ -1,36 +1,31 @@
-﻿@model IEnumerable<Category>
+﻿@model Ecommerce.Application.DTOs.CategoryDto
 
-<h2>Categories</h2>
+<h3>Create Category</h3>
 
-<a asp-action="Create" class="btn btn-primary mb-2">Add Category</a>
+<form asp-action="Create">
 
-<table class="table table-bordered">
+    <div class="form-group">
+        <label>Name</label>
+        <input asp-for="CategoryName" class="form-control" />
+    </div>
 
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Action</th>
-        </tr>
-    </thead>
+    <div class="form-group">
+        <label>Slug</label>
+        <input asp-for="Slug" class="form-control" />
+    </div>
 
-    <tbody>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Name</td>
+    <div class="form-group">
+        <label>Active</label>
+        <input asp-for="IsActive" type="checkbox" />
+    </div>
 
-                <td>
+    <br>
 
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+    <button class="btn btn-success">Save</button>
 
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-
-                </td>
-
-            </tr>
-        }
-
-    </tbody>
-
-</table>
+</form>

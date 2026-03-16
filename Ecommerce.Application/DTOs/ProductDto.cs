@@ -1,12 +1,23 @@
-﻿namespace Ecommerce.Application.DTOs;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Ecommerce.Application.DTOs;
 
 public class ProductDto
 {
-    public int Id { get; set; }
+    public int ProductID { get; set; }
 
-    public string Name { get; set; }
+    [Required]
+    public string ProductName { get; set; } = string.Empty;
 
+    [Required]
     public decimal Price { get; set; }
 
-    public int CategoryId { get; set; }
+    public string? ProductImage { get; set; }
+
+    public string? ProductDetails { get; set; }
+
+    [Required]
+    public int CategoryID { get; set; }
+
+    public string? CategoryName { get; set; }
 }

@@ -1,23 +1,18 @@
-﻿using Ecommerce.Admin.Web.Models;
-using Ecommerce.Infrastructure.Data;
+﻿using Ecommerce.Application.DTOs;
+using Ecommerce.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Admin.Web.Controllers;
 
-public class CategoryController : Controller
+public class CategoryController(ICategoryService service) : Controller
 {
-    private readonly AppDbContext _context;
-
-    public CategoryController(AppDbContext context)
-    {
-        _context = context;
-    }
 
     public async Task<IActionResult> Index()
     {
-        return View(await _context.Categories.ToListAsync());
+        var data = await service.GetAllAsync();
+        return View(data);
     }
+
 
     public IActionResult Create()
     {
@@ -25,11 +20,55 @@ public class CategoryController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(Category category)
+    public async Task<IActionResult> Create(CategoryDto dto)
     {
-        _context.Add(category);
-        await _context.SaveChangesAsync();
+        if (!ModelState.IsValid)
+            return View(dto);
+
+        await service.CreateAsync(dto);
 
         return RedirectToAction(nameof(Index));
     }
+
+
+    public async Task<IActionResult> Edit(int id)
+    {
+        var category = await service.GetAsync(id);
+
+        if (category == null)
+            return NotFound();
+
+        return View(category);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(CategoryDto dto)
+    {
+        if (!ModelState.IsValid)
+            return View(dto);
+
+        await service.UpdateAsync(dto);
+
+        return RedirectToAction(nameof(Index));
+    }
+
+
+    public async Task<IActionResult> Delete(int id)
+    {
+        var category = await service.GetAsync(id);
+
+        if (category == null)
+            return NotFound();
+
+        return View(category);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        await service.DeleteAsync(id);
+
+        return RedirectToAction(nameof(Index));
+    }
+
 }
