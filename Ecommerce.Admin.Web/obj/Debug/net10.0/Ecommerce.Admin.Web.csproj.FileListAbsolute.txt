@@ -2471,4 +2471,3 @@ D:\E-Commarce\Ecommerce.Admin.Web\obj\Debug\net10.0\refint\Ecommerce.Admin.Web.d
 D:\E-Commarce\Ecommerce.Admin.Web\obj\Debug\net10.0\Ecommerce.Admin.Web.pdb
 D:\E-Commarce\Ecommerce.Admin.Web\obj\Debug\net10.0\Ecommerce.Admin.Web.genruntimeconfig.cache
 D:\E-Commarce\Ecommerce.Admin.Web\obj\Debug\net10.0\ref\Ecommerce.Admin.Web.dll
-D:\E-Commarce\Ecommerce.Admin.Web\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
