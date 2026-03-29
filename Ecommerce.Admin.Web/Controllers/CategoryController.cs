@@ -31,9 +31,9 @@ public class CategoryController(ICategoryService service) : Controller
     }
 
 
-    public async Task<IActionResult> Edit(int id)
+    public async Task<IActionResult> Edit(int CategoryID)
     {
-        var category = await service.GetAsync(id);
+        var category = await service.GetAsync(CategoryID);
 
         if (category == null)
             return NotFound();
@@ -64,9 +64,9 @@ public class CategoryController(ICategoryService service) : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> DeleteConfirmed(int id)
+    public async Task<IActionResult> DeleteConfirmed(int CategoryID)
     {
-        await service.DeleteAsync(id);
+        await service.DeleteAsync(CategoryID);
 
         return RedirectToAction(nameof(Index));
     }
